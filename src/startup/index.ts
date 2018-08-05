@@ -1,14 +1,14 @@
-import Bluebird from 'bluebird'
-import * as express from 'express'
+import promise = require('bluebird')
+import express = require('express')
 
-import * as middleware from './middleware'
-import database from './database'
+const middleware = require('./middleware')
+const database = require('./database')
 
-export default async (app: express.Application): Promise<express.Application> => {
-  await Bluebird.each([
+export const startup = async (app): Promise<express.Application> => {
+  await promise.each([
     database,
     middleware
-  ], (func: any) => func(app))
+  ], func => func(app))
 
   return app
 }

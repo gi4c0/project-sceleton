@@ -1,6 +1,5 @@
-import * as mongoose from 'mongoose'
-import * as config from 'config'
+import { db } from '../models'
 
-export default () => {
-  mongoose.connect(config.get('db'), { useMongoClient: true })
+module.exports = () => {
+  db.sequelize.sync()
 }

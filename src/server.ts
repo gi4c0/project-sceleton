@@ -1,12 +1,8 @@
-import config from 'config'
-import * as express from 'express'
+import express = require('express')
+import { startup } from './startup'
 
-import start from './index'
+const application = express()
 
-const port = config.get('port')
-console.log(port)
-
-start()
-  .then((app: express.Application): void => {
-    app.listen(port, () => console.log(`Listen on port ${port}`))
-  })
+startup(application).then((app: express.Application) => {
+  app.listen(3000, () => console.log('Server start on port 3000'))
+})

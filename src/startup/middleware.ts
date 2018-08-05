@@ -1,12 +1,17 @@
-import morgan from 'morgan'
-import * as bodyParser from 'body-parser'
-import * as express from 'express'
+import morgan = require('morgan')
+import bodyParser = require('body-parser')
 
-import router from '../routes/indexRoute'
+const router = require('../api/router')
 
-export default (app: express.Application): void => {
+module.exports = app => {
   app.use(morgan('dev'))
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(bodyParser.json())
-  app.use(router)
+  app.use('/api', router)
+
+  app.use((err, req, res, next) => {
+    const code = err.httpCode || 500
+    console.log(process.env.NODE_ENV === 'production' ? err.message : err)
+    res.status(code).json({ message: err.message })
+  })
 }
