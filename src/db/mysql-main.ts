@@ -1,5 +1,5 @@
 import mysql = require('promise-mysql')
-const promise = require('bluebird')
+import promise = require('bluebird')
 import config = require('config')
 
 const pool = mysql.createPool({
@@ -15,7 +15,7 @@ const getSqlConnection = () => {
   })
 }
 
-export const queryDB = (query: string): Promise<any> => {
+export const queryDB = <T>(query: string): Promise<T> => {
   return promise.using(getSqlConnection(), connection => {
     return connection.query(query)
   })

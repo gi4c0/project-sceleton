@@ -1,0 +1,22 @@
+* Boilerplate
+** Install dependencies (minimalistic example)
+*** Main
+    aevm
+    body-parser
+    bluebird
+    config
+    cors
+    express
+    joi
+    lodash
+    morgan
+    promise-mysql
+    ts-node
+
+*** Dev Dependencies
+    @types/express
+    @types/joi
+    @types/lodash
+    tslint
+    tslint-config-standard
+    typescript
