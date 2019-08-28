@@ -7,8 +7,13 @@
     "target": "esnext",
     "rootDir": "src",
     "outDir": "dist",
-    "sourceMap": true,
-    "moduleResolution": "node"
+    "sourceMap": false,
+    "noUnusedLocals": true,
+    "moduleResolution": "node",
+    "types": ["node"],
+    "plugins": [
+      { "name": "typescript-tslint-plugin" }
+    ]
   },
 
   "include": [
