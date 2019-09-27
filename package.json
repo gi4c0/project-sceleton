@@ -13,35 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aevm": "^3.0.0",
-    "bcrypt": "^3.0.6",
-    "bluebird": "^3.5.5",
-    "body": "^5.1.0",
-    "config": "^3.2.2",
-    "cors": "^2.8.5",
-    "dotenv": "^8.1.0",
-    "express": "^4.17.1",
-    "joi": "^14.3.1",
-    "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
-    "moment": "^2.24.0",
-    "morgan": "^1.9.1",
-    "pg": "^7.12.1",
-    "promise-mysql": "^4.1.0",
-    "ts": "^0.2.2",
-    "typescript": "^3.6.3"
   },
   "devDependencies": {
-    "@types/bcrypt": "^3.0.0",
-    "@types/bluebird": "^3.5.27",
-    "@types/config": "0.0.34",
-    "@types/elasticsearch": "^5.0.35",
-    "@types/express": "^4.17.1",
-    "@types/joi": "^14.3.3",
-    "@types/jsonwebtoken": "^8.3.4",
-    "@types/lodash": "^4.14.140",
-    "@types/moment": "^2.13.0",
-    "@types/node": "^12.7.8",
-    "tslint": "^5.20.0"
   }
 }
