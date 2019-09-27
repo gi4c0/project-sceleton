@@ -1,23 +1,13 @@
 import { Request, Response, NextFunction } from 'express'
 
-interface IUser {
-  user: {
-    id: number
-    email: string
-    chosenCompanyId: number
-
-    lastUsedAccountId: number
-  }
-}
-
-interface ITypedRequest <Body, Query, Params> extends Request {
+interface ITypedRequest <Body, Query, Params> extends Omit<Request, 'params'> {
   body: Body
   query: Query
-  // params: Params
+  params: Params
 }
 
-type Fn<B, Q, P> = (req: ITypedRequest<B, Q, P> & IUser, res: Response, next: NextFunction) => Promise<any>
+type Fn<B, Q, P> = (req: ITypedRequest<B, Q, P>, res: Response, next: NextFunction) => Promise<any>
 
-export const wrapper = <Body = any, Query = any, Params = any>(fn: Fn<Body, Query, Params>) => (req, res, next) => {
+export const wrapper = <Body = {}, Query = {}, Params = {}>(fn: Fn<Body, Query, Params>) => (req, res, next) => {
   fn(req, res, next).catch(next)
 }
