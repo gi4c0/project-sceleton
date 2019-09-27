@@ -1,22 +1,24 @@
 import mysql = require('promise-mysql')
-import promise = require('bluebird')
 import config = require('config')
 
-const pool = mysql.createPool({
+const poolPromise = mysql.createPool({
   host: config.get('db.mysql.host'),
   user: config.get('db.mysql.user'),
   password: config.get('db.mysql.password'),
   port: config.get('db.mysql.port')
+  // multipleStatements: true
 })
 
-const getSqlConnection = () => {
-  return pool.getConnection().disposer(connection => {
-    pool.releaseConnection(connection)
-  })
-}
+let pool: mysql.Pool
 
-export const queryDB = <T>(query: string): Promise<T> => {
-  return promise.using(getSqlConnection(), connection => {
-    return connection.query(query)
-  })
+export function queryDB(queryStr: string): Promise<{
+  affectedRows: number,
+  insertId: number
+}>
+
+export function queryDB<T>(queryStr: string): Promise<T>
+
+export async function queryDB(queryStr: any) {
+  if (!pool) pool = await poolPromise
+  return pool.query(queryStr)
 }
