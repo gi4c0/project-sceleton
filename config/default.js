@@ -1,4 +1,3 @@
 module.exports = {
-  jwtSecret: 'shhhhhhhh',
-  port: 3000
+  app: { port: process.env.NODE_PORT },
 }

@@ -8,6 +8,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "sourceMap": false,
+    "lib": ["ESNext"],
     "moduleResolution": "node",
     "types": ["node"],
     "plugins": [

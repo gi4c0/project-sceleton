@@ -5,7 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=uat ts-node src/app.ts",
     "build": "rm -rf ./dist && npx tsc",
-    "install-dependencies": "npm i aevm bluebird body config cors @elastic/elasticsearch dotenv express @hapi/joi lodash moment morgan pg promise-mysql ts typescript && npm i -D @types/bluebird @types/express @types/lodash @types/node @types/hapi__joi tslint",
+    "install-dependencies": "npm i aevm bluebird body config cors @elastic/elasticsearch dotenv express @hapi/joi lodash moment morgan pg promise-mysql ts typescript && npm i -D @types/bluebird @types/express @types/lodash @types/node @types/hapi__joi tslint ts-node",
     "debug": "NODE_ENV=uat node --inspect -r ts-node/register src/app.ts",
     "pm2:uat": "npm run build && pm2 start ecosystem.config.js --env uat",
     "pm2:prod": "npm run build && pm2 start ecosystem.config.js --env production"
